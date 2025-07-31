@@ -16,7 +16,7 @@ def load_history():
     except (FileNotFoundError, json.JSONDecodeError):
         return []
     
-# Función para guardar el historial en archivo JSON
+# function to save
 def save_history(history):
     with open("history.json", "w") as f:
         json.dump(history, f, indent=4)
@@ -48,7 +48,6 @@ def calculate_stock(history):
     """Calculate current stock per product."""
     stock = {}
     for entry in history:
-        # Validar que tenga las claves necesarias
         if "product" not in entry or "quantity" not in entry or "type" not in entry:
             print(f"Warning: invalid entry skipped: {entry}")
             continue
@@ -224,7 +223,6 @@ def history(line_from=None, line_to=None):
             "date": date_str,
         })
 
-    # Filtrar por número de línea (id), no por posición en lista
     if line_from is not None and line_to is not None and line_from <= line_to:
         entries = [e for e in entries if line_from <= e["id"] <= line_to]
     else:

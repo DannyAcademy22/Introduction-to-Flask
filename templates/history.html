@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Spectre CSS desde /static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-exp.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-icons.min.css') }}" />
+
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+        }
+        .filter-form {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">History</h2>
+
+        <!-- Filter Form -->
+        <form method="get" action="{{ url_for('history') }}" class="filter-form">
+            <div class="form-group">
+                <label for="lineFrom">From (line number)</label>
+                <input class="form-input" type="number" id="lineFrom" name="lineFrom" min="1" value="{{ request.args.get('lineFrom', '') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="lineTo">To (line number)</label>
+                <input class="form-input" type="number" id="lineTo" name="lineTo" min="1" value="{{ request.args.get('lineTo', '') }}">
+            </div>
+
+            <button class="btn btn-primary" type="submit">Filter</button>
+            <a href="{{ url_for('history') }}" class="btn btn-link">Reset</a>
+        </form>
+
+        <!-- History Table -->
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Operation</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if entries %}
+                    {% for entry in entries %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ entry.operation }}</td>
+                            <td>{{ entry.details }}</td>
+                            <td>{{ entry.date }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">No records found</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <div class="text-center mt-3">
+            <a href="{{ url_for('index') }}" class="btn btn-link">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

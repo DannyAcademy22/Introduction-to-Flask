@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory and Accounting System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Spectre CSS from /static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-exp.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-icons.min.css') }}">
+
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-title {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Inventory and Accounting</h1>
+
+        <!-- Current Stock and Balance -->
+        <div class="section-title">
+            <h4>Current Stock Level:</h4>
+            {% if stock %}
+                <ul>
+                    {% for product, quantity in stock.items() %}
+                        <li>{{ product }}: {{ quantity }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No stock available.</p>
+            {% endif %}
+        </div>
+
+        <div class="section-title">
+            <h4>Current Account Balance:</h4>
+            <p>${{ '%.2f'|format(balance) }}</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="section-title">
+            <h4>Actions</h4>
+            <div>
+                <a href="{{ url_for('purchase_form') }}" class="btn btn-primary btn-block mb-2">Purchase Form</a>
+                <a href="{{ url_for('sale_form') }}" class="btn btn-success btn-block mb-2">Sale Form</a>
+                <a href="{{ url_for('balance_form') }}" class="btn btn-warning btn-block mb-2">Balance Change Form</a>
+                <a href="{{ url_for('history') }}" class="btn btn-dark btn-block">History</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

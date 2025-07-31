@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Balance Change Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Spectre CSS desde carpeta static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-exp.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-icons.min.css') }}">
+
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Balance Change Form</h2>
+
+        <form action="/balance_form" method="post">
+            <div class="form-group">
+                <label for="operation">Operation Type</label>
+                <select class="form-select" id="operation" name="operation" required>
+                    <option value="" disabled selected>Select operation</option>
+                    <option value="add">Add</option>
+                    <option value="subtract">Subtract</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input class="form-input" type="number" id="amount" name="amount" min="0" step="0.01" required>
+            </div>
+
+            <button class="btn btn-warning btn-block" type="submit">Submit</button>
+        </form>
+
+        <div class="text-center mt-2">
+            <a href="{{ url_for('index') }}" class="btn btn-link">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

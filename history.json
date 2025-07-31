@@ -1,0 +1,84 @@
+[
+    {
+        "id": 1,
+        "type": "purchase",
+        "product": "USB Cable",
+        "unit_price": 5.0,
+        "quantity": 10,
+        "date": "2025-07-01"
+    },
+    {
+        "id": 2,
+        "type": "sale",
+        "product": "USB Cable",
+        "unit_price": 8.0,
+        "quantity": 4,
+        "date": "2025-07-02"
+    },
+    {
+        "id": 3,
+        "type": "balance_add",
+        "amount": 200.0,
+        "date": "2025-07-03"
+    },
+    {
+        "id": 4,
+        "type": "balance_subtract",
+        "amount": 75.0,
+        "date": "2025-07-04"
+    },
+    {
+        "id": 5,
+        "type": "purchase",
+        "product": "HDMI Adapter",
+        "unit_price": 12.0,
+        "quantity": 5,
+        "date": "2025-07-05"
+    },
+    {
+        "id": 6,
+        "type": "sale",
+        "product": "HDMI Adapter",
+        "unit_price": 18.0,
+        "quantity": 3,
+        "date": "2025-07-06"
+    },
+    {
+        "type": "purchase",
+        "product": "sdsd",
+        "unit_price": 12.0,
+        "quantity": 1,
+        "total": 12.0
+    },
+    {
+        "type": "purchase",
+        "product": "sdsd",
+        "unit_price": 2.0,
+        "quantity": 2,
+        "total": 4.0
+    },
+    {
+        "type": "sale",
+        "product": "sdsd",
+        "unit_price": 2.0,
+        "quantity": 1
+    },
+    {
+        "type": "sale",
+        "product": "sdsd",
+        "unit_price": 121212.0,
+        "quantity": 1
+    },
+    {
+        "type": "purchase",
+        "product": "sdsd",
+        "unit_price": 12.0,
+        "quantity": 1,
+        "total": 12.0
+    },
+    {
+        "type": "balance",
+        "operation": "add",
+        "amount": 50.0
+    }
+]

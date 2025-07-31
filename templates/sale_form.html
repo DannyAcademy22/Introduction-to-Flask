@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sale Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Spectre CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-exp.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='spectre-icons.min.css') }}" />
+
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Sale Form</h2>
+
+        <form action="{{ url_for('sale_form') }}" method="post">
+            <div class="form-group">
+                <label for="product">Product Name</label>
+                <input class="form-input" type="text" id="product" name="product" required />
+            </div>
+
+            <div class="form-group">
+                <label for="price">Unit Price</label>
+                <input class="form-input" type="number" id="price" name="price" min="0" step="0.01" required />
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Number of Pieces</label>
+                <input class="form-input" type="number" id="quantity" name="quantity" min="1" required />
+            </div>
+
+            <button class="btn btn-success btn-block" type="submit">Submit</button>
+        </form>
+
+        <div class="text-center mt-2">
+            <a href="{{ url_for('index') }}" class="btn btn-link">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
